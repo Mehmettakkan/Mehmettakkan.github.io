@@ -711,8 +711,8 @@
         
         // Geri sayım hesaplama
         function updateCountdown() {
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 90); // 90 gün sonrası
+             // Sabit bir tarih belirleme (örnek: 1 Ağustos 2025)
+            const targetDate = new Date('2025-08-01T00:00:00');
             
             const daysElement = document.getElementById('days');
             const hoursElement = document.getElementById('hours');
@@ -723,16 +723,7 @@
                 const currentDate = new Date();
                 const difference = targetDate - currentDate;
                 
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-                
-                daysElement.textContent = days.toString().padStart(2, '0');
-                hoursElement.textContent = hours.toString().padStart(2, '0');
-                minutesElement.textContent = minutes.toString().padStart(2, '0');
-                secondsElement.textContent = seconds.toString().padStart(2, '0');
-                
+                // Eğer tarih geçmişse
                 if (difference <= 0) {
                     clearInterval(interval);
                     daysElement.textContent = '00';
@@ -767,7 +758,19 @@
                     if (contentElement) {
                         contentElement.appendChild(btnElement);
                     }
+                    
+                    return;
                 }
+                
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                
+                daysElement.textContent = days.toString().padStart(2, '0');
+                hoursElement.textContent = hours.toString().padStart(2, '0');
+                minutesElement.textContent = minutes.toString().padStart(2, '0');
+                secondsElement.textContent = seconds.toString().padStart(2, '0');
             }
             
             // İlk güncelleme
