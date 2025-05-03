@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mehmet Akkan - Kişisel web sitesi yakında yayında!">
+    <meta name="keywords" content="Mehmet Akkan, web geliştirici, portfolio, projeler">
+    <meta name="author" content="Mehmet Akkan">
     <title>Mehmet Akkan | Yakında</title>
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
+        /* Reset CSS */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -32,8 +36,12 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
+        /* Background animations */
         .bg-scene {
             position: fixed;
             top: 0;
@@ -80,6 +88,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            pointer-events: none;
         }
         
         .particle {
@@ -105,22 +114,25 @@
             }
         }
         
+        /* Main container styles */
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
             position: relative;
             z-index: 10;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            min-height: 100vh;
         }
         
         .content {
             text-align: center;
             background: var(--bg-card);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); /* Safari support */
             padding: 60px;
             border-radius: 24px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 
@@ -166,6 +178,7 @@
             }
         }
         
+        /* Logo and headings */
         .logo {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
@@ -252,6 +265,7 @@
             opacity: 0.6;
         }
         
+        /* Countdown timer */
         .countdown {
             display: flex;
             justify-content: center;
@@ -319,6 +333,7 @@
             letter-spacing: 2px;
         }
         
+        /* Message and form */
         .message {
             font-size: 1.1rem;
             line-height: 1.8;
@@ -420,6 +435,7 @@
             }
         }
         
+        /* Social links */
         .social-links {
             display: flex;
             justify-content: center;
@@ -470,6 +486,7 @@
             opacity: 1;
         }
         
+        /* Footer */
         .footer {
             margin-top: 50px;
             font-size: 0.9rem;
@@ -494,6 +511,18 @@
         
         .credit a:hover {
             color: #e94057;
+        }
+        
+        /* Form success state */
+        .form-success {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(46, 213, 115, 0.1);
+            border-radius: 12px;
+            color: #2ed573;
+            animation: fadeIn 0.5s ease-out;
         }
         
         /* Responsive Adjustments */
@@ -579,6 +608,23 @@
                 font-size: 20px;
             }
         }
+
+        /* Small screen adjustments */
+        @media (max-width: 350px) {
+            .countdown {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .countdown-item {
+                min-width: 45%;
+            }
+            
+            .countdown-value {
+                width: 100%;
+                font-size: 1.6rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -612,12 +658,17 @@
             
             <p class="message">Kişisel web sitemin yapım aşamasındayım. Çok yakında burada <span class="highlights">portföyüm</span>, <span class="highlights">projelerim</span>, <span class="highlights">makalelerim</span> ve daha fazlasıyla karşınızda olacağım. Haberdar olmak için e-posta adresinizi bırakabilirsiniz.</p>
             
-            <form class="notify-form" action="https://formspree.io/f/movdewen" method="POST">
+            <form class="notify-form" id="notify-form" action="https://formspree.io/f/movdewen" method="POST">
                 <input type="email" name="email" class="notify-input" placeholder="E-posta adresiniz..." required>
                 <input type="hidden" name="_subject" value="Yeni Web Sitesi Bildirim İsteği">
-                <input type="hidden" name="_next" value="https://mehmettakkan.me/tesekkurler.html">
+                <input type="hidden" name="_next" value="https://mehmetakkan.me/tesekkurler.html">
                 <button type="submit" class="notify-button">Bana Haber Ver</button>
             </form>
+            
+            <div class="form-success" id="form-success">
+                <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <p>Teşekkürler! E-posta adresiniz kaydedildi. Web sitem yayına girdiğinde sizi bilgilendireceğim.</p>
+            </div>
             
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/mehmettakkan/" target="_blank" class="social-link" aria-label="LinkedIn">
@@ -638,27 +689,27 @@
     </div>
     
     <script>
-        // Shooting stars efekti oluşturma
+        // Shooting stars effect
         function createShootingStars() {
             const scene = document.getElementById('bg-scene');
-            const starCount = 20;
+            const starCount = Math.min(20, Math.max(10, Math.floor(window.innerWidth / 50))); // Responsive star count
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('shooting-star');
                 
-                // Rastgele konum
+                // Random position
                 const posX = Math.random() * 100;
                 const posY = Math.random() * 100;
                 star.style.left = `${posX}%`;
                 star.style.top = `${posY}%`;
                 
-                // Rastgele boyut
+                // Random size
                 const size = Math.random() * 2 + 1;
                 star.style.width = `${size}px`;
-                star.style.height = `${size*50}px`; // Kuyruk
+                star.style.height = `${size*50}px`; // Tail
                 
-                // Rastgele animasyon gecikmesi
+                // Random animation delay
                 const delay = Math.random() * 20;
                 star.style.animationDelay = `${delay}s`;
                 
@@ -666,49 +717,49 @@
             }
         }
         
-        // Rastgele parçacıklar oluşturma
+        // Create random particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 25;
+            const particleCount = Math.min(25, Math.max(15, Math.floor(window.innerWidth / 40))); // Responsive particle count
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
-                // Rastgele boyut
+                // Random size
                 const size = Math.random() * 60 + 25;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 
-                // Rastgele konum
+                // Random position
                 const posX = Math.random() * 100;
                 const posY = Math.random() * 100;
                 particle.style.left = `${posX}%`;
                 particle.style.top = `${posY}%`;
                 
-                // Rastgele animasyon süresi
+                // Random animation duration
                 const duration = Math.random() * 20 + 15;
                 particle.style.animationDuration = `${duration}s`;
                 
-                // Rastgele animasyon gecikmesi
+                // Random animation delay
                 const delay = Math.random() * 10;
                 particle.style.animationDelay = `${delay}s`;
                 
-                // Rastgele opaklık
+                // Random opacity
                 const opacity = Math.random() * 0.12 + 0.08;
                 particle.style.opacity = opacity;
                 
-                // Rastgele renk
-                const hue = Math.random() * 30 + 210; // Mavi tonları
+                // Random color
+                const hue = Math.random() * 30 + 210; // Blue shades
                 particle.style.background = `hsla(${hue}, 70%, 60%, ${opacity})`;
                 
                 particlesContainer.appendChild(particle);
             }
         }
         
-        // Geri sayım hesaplama
+        // Countdown calculation
         function updateCountdown() {
-             // Sabit bir tarih belirleme (örnek: 1 Ağustos 2025)
+            // Fixed target date (August 1, 2025)
             const targetDate = new Date('2025-08-01T00:00:00');
             
             const daysElement = document.getElementById('days');
@@ -720,7 +771,7 @@
                 const currentDate = new Date();
                 const difference = targetDate - currentDate;
                 
-                // Eğer tarih geçmişse
+                // If the date has passed
                 if (difference <= 0) {
                     clearInterval(interval);
                     daysElement.textContent = '00';
@@ -728,7 +779,7 @@
                     minutesElement.textContent = '00';
                     secondsElement.textContent = '00';
                     
-                    // Süre dolduysa mesajı güncelle
+                    // Update message if time is up
                     const subtitleElement = document.querySelector('.subtitle');
                     if (subtitleElement) {
                         subtitleElement.innerHTML = 'Web sitem <span class="highlight">şimdi</span> yayında!';
@@ -770,43 +821,136 @@
                 secondsElement.textContent = seconds.toString().padStart(2, '0');
             }
             
-            // İlk güncelleme
+            // Initial update
             update();
             
-            // 1 saniyede bir güncelleme
+            // Update every second
             const interval = setInterval(update, 1000);
         }
         
-        // Dinamik yıl eklemek için
+        // Add dynamic year
         function updateYear() {
             const currentYearElement = document.getElementById('current-year');
             const currentYear = new Date().getFullYear();
             currentYearElement.textContent = currentYear;
         }
         
-        // Sayfa yüklendiğinde çalıştır
-        window.addEventListener('load', function() {
+        // Form submission handling
+        function setupFormHandling() {
+            // Check if we were redirected from form submission
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                const formElement = document.getElementById('notify-form');
+                const successElement = document.getElementById('form-success');
+                
+                if (formElement && successElement) {
+                    formElement.style.display = 'none';
+                    successElement.style.display = 'block';
+                }
+            }
+            
+            // In case the form is submitted without JavaScript
+            const form = document.getElementById('notify-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    // Form will still be submitted to Formspree
+                    // This just provides some visual feedback
+                    const button = form.querySelector('button[type="submit"]');
+                    if (button) {
+                        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gönderiliyor...';
+                        button.disabled = true;
+                    }
+                });
+            }
+        }
+        
+        // Browser compatibility check
+        function checkCompatibility() {
+            // Check for basic required features
+            const hasRequiredFeatures = (
+                'querySelector' in document && 
+                'addEventListener' in window && 
+                'classList' in document.createElement('div')
+            );
+            
+            if (!hasRequiredFeatures) {
+                // Very basic fallback for extremely old browsers
+                const container = document.querySelector('.container');
+                if (container) {
+                    container.innerHTML = '<div style="text-align:center;padding:20px;"><h1>Mehmet Akkan</h1><p>Kişisel web sitem yakında yayında!</p><p>Tarayıcınızı güncelleyerek daha iyi bir deneyim yaşayabilirsiniz.</p></div>';
+                }
+            }
+            
+            // Check if backdrop-filter is supported, provide fallback if not
+            const supportsBackdropFilter = CSS.supports('(backdrop-filter: blur(1px))') || 
+                                          CSS.supports('(-webkit-backdrop-filter: blur(1px))');
+            
+            if (!supportsBackdropFilter) {
+                const content = document.querySelector('.content');
+                if (content) {
+                    content.style.background = 'rgba(26, 26, 46, 0.85)'; // Darker fallback
+                }
+            }
+        }
+        
+        // Handle window resize
+        function handleResize() {
+            // Clear existing elements
+            const scene = document.getElementById('bg-scene');
+            const particles = document.getElementById('particles');
+            
+            if (scene) scene.innerHTML = '';
+            if (particles) particles.innerHTML = '';
+            
+            // Recreate with appropriate density for screen size
+            createShootingStars();
+            createParticles();
+        }
+        
+        // Page load events
+        document.addEventListener('DOMContentLoaded', function() {
+            checkCompatibility();
             createShootingStars();
             createParticles();
             updateCountdown();
             updateYear();
+            setupFormHandling();
             
-            // Hover efektleri için interaktivite ekle
+            // Add resize handler with debounce
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(handleResize, 300);
+            });
+            
+            // Interactive elements
             const countdownItems = document.querySelectorAll('.countdown-value');
             countdownItems.forEach(item => {
-                item.addEventListener('mouseover', function() {
-                    this.style.transform = 'translateY(-5px)';
-                    this.style.background = 'rgba(255, 255, 255, 0.15)';
-                    this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2)';
-                });
-                
-                item.addEventListener('mouseout', function() {
-                    this.style.transform = '';
-                    this.style.background = '';
-                    this.style.boxShadow = '';
-                });
+                // Touch devices need different handling than mouse
+                if ('ontouchstart' in window) {
+                    item.addEventListener('touchstart', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.background = 'rgba(255, 255, 255, 0.15)';
+                        this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2)';
+                    });
+                    
+                    item.addEventListener('touchend', function() {
+                        this.style.transform = '';
+                        this.style.background = '';
+                        this.style.boxShadow = '';
+                    });
+                } else {
+                    item.addEventListener('mouseover', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.background = 'rgba(255, 255, 255, 0.15)';
+                        this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2)';
+                    });
+                    
+                    item.addEventListener('mouseout', function() {
+                        this.style.transform = '';
+                        this.style.background = '';
+                        this.style.boxShadow = '';
+                    });
+                }
             });
         });
-    </script>
-</body>
-</html>
