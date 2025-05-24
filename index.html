@@ -1,1 +1,1355 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <!-- Temel Meta Etiketleri -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Optimizasyonu -->
+    <meta
+      name="description"
+      content="Mehmet Akkan'ın kişisel web sitesi yakında yayında! Web geliştirme, projeler ve profesyonel portföy içeriğiyle karşınızda olacağım."
+    />
+    <meta
+      name="keywords"
+      content="Mehmet Akkan, mühendis, geliştirici, developer, portfolio, projeler, yazılım, kişisel web sitesi"
+    />
+    <meta name="author" content="Mehmet Akkan" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Sosyal Medya Paylaşımı için -->
+    <meta property="og:title" content="Mehmet Akkan | Kişisel Web Sitesi" />
+    <meta property="og:description" content="Mehmet Akkan'ın kişisel web sitesi yakında yayında!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mehmetakkan.me" />
+    <meta property="og:image" content="https://mehmetakkan.me/preview-image.jpg" />
+    <meta property="og:site_name" content="Mehmet Akkan" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@" />
+    <meta name="twitter:title" content="Mehmet Akkan | Kişisel Web Sitesi" />
+    <meta name="twitter:description" content="Mehmet Akkan'ın kişisel web sitesi yakında yayında!" />
+    <meta name="twitter:image" content="https://mehmetakkan.me/preview-image.jpg" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mehmetakkan.me" />
+    
+    <!-- Favicon ve Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Başlık -->
+    <title>Mehmet Akkan | Yakında</title>
+    
+    <!-- Fontlar -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mehmet Akkan",
+      "url": "https://mehmetakkan.me",
+      "sameAs": [
+        "https://www.linkedin.com/in/mehmettakkan/",
+        "https://github.com/Mehmettakkan",
+        "https://www.kaggle.com/mehmettakkan"
+      ],
+      "jobTitle": "Bilgisayar Mühendisi"
+    }
+    </script>
+    
+    <style>
+        /* Reset CSS ve temel değişkenler */
+        :root {
+            --bg-primary: #0a0f1f;
+            --bg-secondary: #1a1f30;
+            --accent-primary: #4f46e5;
+            --accent-secondary: #7c3aed;
+            --accent-tertiary: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --success-color: #10b981;
+            --main-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            --glow-shadow: 0 0 80px rgba(79, 70, 229, 0.15);
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-secondary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            --bezier-fast: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --bezier-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img, svg {
+            max-width: 100%;
+            display: block;
+        }
+        
+        /* Animasyon Stilleri */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(2deg); }
+            50% { transform: translateY(-30px) rotate(-1deg); }
+            75% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Meteor/Kuyruklu Yıldız Animasyonu */
+        .meteor {
+            position: absolute;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+            transform: rotate(45deg);
+            animation: meteor 10s linear infinite;
+            border-radius: 10px;
+            z-index: 0;
+            opacity: 0;
+        }
+
+        @keyframes meteor {
+            0% {
+                transform: translateY(-300px) translateX(-300px) rotate(45deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(1000px) translateX(1000px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Arka Plan Animasyonları */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, #111827 0%, #030712 100%);
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+            animation: rotate 60s linear infinite;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 50%;
+            filter: drop-shadow(0 0 6px #fff);
+            animation-name: shooting;
+            animation-timing-function: ease-out;
+            opacity: 0;
+        }
+        
+        @keyframes shooting {
+            0% {
+                opacity: 0;
+                transform-origin: 0 0;
+                transform: scale(0.3) rotate(-45deg) translateX(0);
+            }
+            5% {
+                opacity: 1;
+            }
+            50%, 100% {
+                opacity: 0;
+                transform-origin: 0 0;
+                transform: scale(1) rotate(-45deg) translateX(100vw);
+            }
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+            animation: starTwinkle var(--twinkle-duration) ease-in-out infinite;
+        }
+        
+        @keyframes starTwinkle {
+            0%, 100% { opacity: var(--min-opacity); }
+            50% { opacity: 1; }
+        }
+        
+        .parallax-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .parallax-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(124, 58, 237, 0.2));
+            filter: blur(40px);
+            pointer-events: none;
+            animation: float calc(20s + (var(--index) * 5s)) infinite var(--bezier-smooth);
+        }
+        
+        /* Ana Konteyner Stilleri */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Ana İçerik Kartı */
+        .content-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), var(--glow-shadow);
+            padding: 4rem 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 1s var(--bezier-smooth) forwards;
+            transition: transform 0.3s var(--bezier-smooth), box-shadow 0.3s var(--bezier-smooth);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .content-card::before,
+        .content-card::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.2;
+            animation: pulse 8s infinite alternate var(--bezier-smooth);
+        }
+        
+        .content-card::before {
+            background: var(--accent-primary);
+            top: -150px;
+            left: -150px;
+        }
+        
+        .content-card::after {
+            background: var(--accent-secondary);
+            bottom: -150px;
+            right: -150px;
+        }
+        
+        /* Logo ve Başlık Stilleri */
+        .logo {
+            font-family: var(--font-secondary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.5s var(--bezier-fast) forwards;
+        }
+        
+        .logo .accent {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
+        }
+        
+        h1 {
+            font-family: var(--font-secondary);
+            font-size: 4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            animation: fadeIn 0.5s var(--bezier-fast) 0.2s forwards;
+            opacity: 0;
+        }
+        
+        h1 .highlight-text {
+            position: relative;
+            display: inline-block;
+            color: var(--accent-primary);
+            transform-style: preserve-3d;
+            perspective: 500px;
+            text-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+        }
+        
+        .highlight-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--main-gradient);
+            border-radius: 5px;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: expandWidth 1.5s var(--bezier-fast) 0.8s forwards;
+        }
+        
+        @keyframes expandWidth {
+            to { transform: scaleX(1); }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            text-align: center;
+            margin: 1.5rem 0 3rem;
+            animation: fadeIn 0.5s var(--bezier-fast) 0.4s forwards;
+            opacity: 0;
+        }
+        
+        /* Geri Sayım Stilleri */
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+            animation: fadeIn 0.5s var(--bezier-fast) 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .countdown-value {
+            font-family: var(--font-secondary);
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 20px rgba(79, 70, 229, 0.1);
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s var(--bezier-fast), box-shadow 0.3s var(--bezier-fast);
+        }
+        
+        .countdown-value:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 30px rgba(79, 70, 229, 0.2);
+        }
+        
+        .countdown-value::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+            z-index: 1;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+        }
+        
+        /* Mesaj ve Form Stilleri */
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            margin: 2.5rem 0;
+            color: var(--text-secondary);
+            animation: fadeIn 0.5s var(--bezier-fast) 0.8s forwards;
+            opacity: 0;
+        }
+        
+        .highlight {
+            color: var(--accent-secondary);
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--accent-secondary);
+            opacity: 0.2;
+            border-radius: 8px;
+            z-index: -1;
+        }
+        
+        .subscribe-form {
+            margin-top: 3rem;
+            animation: fadeIn 0.5s var(--bezier-fast) 1s forwards;
+            opacity: 0;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-input {
+            flex: 1;
+            height: 56px;
+            min-height: 56px;
+            box-sizing: border-box;
+            padding: 0 1.5rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: all 0.3s var(--bezier-smooth);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            line-height: normal;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .submit-button {
+            height: 56px;
+            min-height: 56px;
+            box-sizing: border-box;
+            padding: 0 2rem;
+            border: none;
+            border-radius: 28px;
+            background: var(--main-gradient);
+            color: white;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s var(--bezier-smooth);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            line-height: normal;
+        }
+        
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s var(--bezier-smooth);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+        
+        .submit-button:hover::before {
+            opacity: 1;
+        }
+        
+        .submit-button:active {
+            transform: translateY(1px);
+        }
+        
+        .form-success {
+            display: none;
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 16px;
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            animation: fadeIn 0.5s var(--bezier-fast);
+        }
+        
+        .success-icon {
+            font-size: 2.5rem;
+            color: var(--success-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Sosyal Medya Linkleri */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+            animation: fadeIn 0.5s var(--bezier-fast) 1.2s forwards;
+            opacity: 0;
+        }
+        
+        .social-link {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            transition: all 0.3s var(--bezier-fast);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--main-gradient);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s var(--bezier-smooth);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        
+        .social-link:hover::before {
+            opacity: 1;
+        }
+        
+        /* Footer Stilleri */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            animation: fadeIn 0.5s var(--bezier-fast) 1.4s forwards;
+            opacity: 0;
+        }
+        
+        /* Responsive Stilleri */
+        @media (max-width: 768px) {
+            .content-card {
+                padding: 3rem 2rem;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+                margin: 1rem 0 2rem;
+            }
+            
+            .countdown {
+                gap: 1rem;
+            }
+            
+            .countdown-value {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .submit-button {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content-card {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .countdown-value {
+                font-size: 2.2rem;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+            
+            .social-link {
+                width: 46px;
+                height: 46px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Interaktif Efektler ve Animasyonlar */
+        .interactive-element {
+            position: absolute;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.2), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: pulse 2s infinite;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .mouse-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            border: 2px solid rgba(79, 70, 229, 0.3);
+            transform: translate(-50%, -50%);
+            transition: all 0.15s ease;
+            opacity: 0;
+        }
+        
+        .button-shimmer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+            pointer-events: none;
+        }
+        
+        /* Profesyonel Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s ease-in-out infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader-logo {
+            margin-bottom: 30px;
+            font-family: var(--font-secondary);
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .preloader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(79, 70, 229, 0.1);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: preloader-spin 1s ease-in-out infinite;
+        }
+
+        @keyframes preloader-spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">&lt; MA /&gt;</div>
+        <div class="preloader-spinner"></div>
+    </div>
+    
+    <div class="animated-bg">
+        <div class="stars" id="stars"></div>
+        <div class="meteors" id="meteors"></div>
+        <div class="parallax-elements" id="parallax-elements"></div>
+    </div>
+    
+    <div class="mouse-follower" id="mouse-follower"></div>
+    
+    <div class="container">
+        <main class="content-card tilt-element" id="content-card">
+            <div class="logo" aria-label="Mehmet Akkan Logo">&lt; <span class="accent">MA</span> /&gt;</div>
+            <h1>Mehmet <span class="highlight-text">Akkan</span></h1>
+            <p class="subtitle">Kişisel web sitem çok yakında yayında olacak</p>
+            
+            <div class="countdown" id="countdown" aria-label="Yayınlanma geri sayımı">
+                <div class="countdown-item">
+                    <div class="countdown-value tilt-element" id="days">00</div>
+                    <div class="countdown-label">Gün</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value tilt-element" id="hours">00</div>
+                    <div class="countdown-label">Saat</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value tilt-element" id="minutes">00</div>
+                    <div class="countdown-label">Dakika</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value tilt-element" id="seconds">00</div>
+                    <div class="countdown-label">Saniye</div>
+                </div>
+            </div>
+            
+            <p class="message">
+                Kişisel web sitemin yapım aşamasındayım. Çok yakında burada 
+                <span class="highlight">portföyüm</span>, 
+                <span class="highlight">projelerim</span>, 
+                <span class="highlight">makalelerim</span> 
+                ve daha fazlasıyla karşınızda olacağım. Haberdar olmak için e-posta adresinizi bırakabilirsiniz.
+            </p>
+            
+            <form class="subscribe-form" id="notify-form" action="https://formspree.io/f/movdewen" method="POST">
+                <div class="form-row">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        class="form-input" 
+                        placeholder="E-posta adresiniz" 
+                        required 
+                        aria-label="E-posta adresi"
+                    >
+                    <input type="hidden" name="_subject" value="Yeni Web Sitesi Bildirim İsteği">
+                    <input type="hidden" name="_next" value="https://mehmetakkan.me/thanks.html">
+                    <button type="submit" class="submit-button">
+                        Bana Haber Ver
+                        <span class="button-shimmer"></span>
+                    </button>
+                </div>
+            </form>
+            
+            <div class="form-success" id="form-success">
+                <i class="fas fa-check-circle success-icon"></i>
+                <p>Teşekkürler! E-posta adresiniz kaydedildi. Web sitem yayına girdiğinde sizi bilgilendireceğim.</p>
+            </div>
+            
+            <nav class="social-links" aria-label="Sosyal Medya Bağlantıları">
+                <a href="https://www.linkedin.com/in/mehmettakkan/" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Mehmettakkan" target="_blank" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.kaggle.com/mehmettakkan" target="_blank" class="social-link" aria-label="Kaggle">
+                    <i class="fab fa-kaggle"></i>
+                </a>
+            </nav>
+            
+            <footer class="footer">
+                &copy; <span id="current-year"></span> Mehmet Akkan. Tüm hakları saklıdır.
+            </footer>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preloader
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 1500);
+            
+            // Tarayıcı uyumluluk kontrolü ve düşük özelliklere sahip tarayıcılar için fallback
+            function checkCompatibility() {
+                const hasRequiredFeatures = (
+                    'querySelector' in document && 
+                    'addEventListener' in window && 
+                    'classList' in document.createElement('div')
+                );
+                
+                if (!hasRequiredFeatures) {
+                    document.querySelector('.container').innerHTML = `
+                        <div style="text-align:center; padding:20px;">
+                            <h1>Mehmet Akkan</h1>
+                            <p>Kişisel web sitem yakında yayında!</p>
+                            <p>Tarayıcınızı güncelleyerek daha iyi bir deneyim yaşayabilirsiniz.</p>
+                        </div>`;
+                    return false;
+                }
+                
+                if (!CSS.supports('(backdrop-filter: blur(1px))') && 
+                    !CSS.supports('(-webkit-backdrop-filter: blur(1px))')) {
+                    document.querySelector('.content-card').style.background = 'rgba(26, 31, 48, 0.9)';
+                }
+                
+                return true;
+            }
+            
+            // Yıldızlar efekti
+            function createStars() {
+                const starsContainer = document.getElementById('stars');
+                const starCount = Math.floor(Math.min(150, window.innerWidth / 5));
+                
+                starsContainer.innerHTML = '';
+                
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    
+                    // Rastgele boyut, pozisyon ve animasyon
+                    const size = Math.random() * 2 + 1;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    const duration = Math.random() * 3 + 2;
+                    const delay = Math.random() * 5;
+                    const minOpacity = Math.random() * 0.5 + 0.1;
+                    
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${posX}%`;
+                    star.style.top = `${posY}%`;
+                    star.style.setProperty('--twinkle-duration', `${duration}s`);
+                    star.style.animationDelay = `${delay}s`;
+                    star.style.setProperty('--min-opacity', minOpacity);
+                    
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            // Kayan yıldızlar efekti
+            function createShootingStars() {
+                const starsContainer = document.getElementById('stars');
+                const starCount = Math.min(10, Math.floor(window.innerWidth / 100));
+                
+                for (let i = 0; i < starCount; i++) {
+                    const shootingStar = document.createElement('div');
+                    shootingStar.classList.add('shooting-star');
+                    
+                    // Rastgele boyut, pozisyon ve animasyon
+                    const width = Math.random() * 100 + 50;
+                    const posY = Math.random() * 50;
+                    const posX = Math.random() * 25;
+                    const delay = Math.random() * 15;
+                    const duration = Math.random() * 5 + 3;
+                    
+                    shootingStar.style.width = `${width}px`;
+                    shootingStar.style.height = `2px`;
+                    shootingStar.style.top = `${posY}%`;
+                    shootingStar.style.left = `${posX}%`;
+                    shootingStar.style.animationDuration = `${duration}s`;
+                    shootingStar.style.animationDelay = `${delay}s`;
+                    shootingStar.style.animationIterationCount = 'infinite';
+                    
+                    starsContainer.appendChild(shootingStar);
+                }
+            }
+            
+            // Meteor efekti
+            function createMeteors() {
+                const meteorsContainer = document.getElementById('meteors');
+                const meteorCount = 5;
+                
+                meteorsContainer.innerHTML = '';
+                
+                for (let i = 0; i < meteorCount; i++) {
+                    const meteor = document.createElement('div');
+                    meteor.classList.add('meteor');
+                    
+                    // Rastgele pozisyon ve animasyon
+                    const posX = Math.random() * 100;
+                    const delay = Math.random() * 15;
+                    const duration = Math.random() * 5 + 7;
+                    const size = Math.random() * 100 + 50;
+                    
+                    meteor.style.left = `${posX}%`;
+                    meteor.style.height = `${size}px`;
+                    meteor.style.animationDuration = `${duration}s`;
+                    meteor.style.animationDelay = `${delay}s`;
+                    
+                    meteorsContainer.appendChild(meteor);
+                }
+            }
+            
+            // 3D Tilt Efekti
+            function initTiltEffect() {
+                // Mobil cihazlarda devre dışı bırak
+                if ('ontouchstart' in window) {
+                    return;
+                }
+                
+                const tiltElements = document.querySelectorAll('.tilt-element');
+                const contentCard = document.getElementById('content-card');
+                
+                document.addEventListener('mousemove', (e) => {
+                    const x = e.clientX;
+                    const y = e.clientY;
+                    
+                    // Ana kart için hafif 3D efekti
+                    if (contentCard) {
+                        const rect = contentCard.getBoundingClientRect();
+                        const centerX = rect.left + rect.width / 2;
+                        const centerY = rect.top + rect.height / 2;
+                        
+                        const moveX = (x - centerX) / 50;
+                        const moveY = (y - centerY) / 50;
+                        
+                        contentCard.style.transform = `perspective(1000px) rotateX(${-moveY}deg) rotateY(${moveX}deg) translateZ(10px)`;
+                    }
+                    
+                    // Diğer tilt elementleri için
+                    tiltElements.forEach(element => {
+                        if (element === contentCard) return; // Ana kart için zaten efekt uyguladık
+                        
+                        const rect = element.getBoundingClientRect();
+                        
+                        if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                            const centerX = rect.left + rect.width / 2;
+                            const centerY = rect.top + rect.height / 2;
+                            
+                            const moveX = (x - centerX) / 10;
+                            const moveY = (y - centerY) / 10;
+                            
+                            element.style.transform = `perspective(500px) rotateX(${-moveY}deg) rotateY(${moveX}deg) translateZ(10px)`;
+                        } else {
+                            element.style.transform = 'perspective(500px) rotateX(0) rotateY(0) translateZ(0)';
+                        }
+                    });
+                });
+                
+                // Mouse ayrıldığında sıfırla
+                document.addEventListener('mouseleave', () => {
+                    if (contentCard) {
+                        contentCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                    }
+                    
+                    tiltElements.forEach(element => {
+                        element.style.transform = 'perspective(500px) rotateX(0) rotateY(0) translateZ(0)';
+                    });
+                });
+            }
+            
+            // Parallax elementleri
+            function createParallaxElements() {
+                const container = document.getElementById('parallax-elements');
+                const elementCount = 5;
+                
+                container.innerHTML = '';
+                
+                for (let i = 0; i < elementCount; i++) {
+                    const element = document.createElement('div');
+                    element.classList.add('parallax-element');
+                    
+                    // Rastgele boyut ve pozisyon
+                    const size = Math.random() * 200 + 100;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    
+                    element.style.width = `${size}px`;
+                    element.style.height = `${size}px`;
+                    element.style.left = `${posX}%`;
+                    element.style.top = `${posY}%`;
+                    element.style.setProperty('--index', i);
+                    
+                    container.appendChild(element);
+                }
+            }
+            
+            // Mouse takip efekti
+            function initMouseFollower() {
+                const follower = document.getElementById('mouse-follower');
+                
+                // Mobil cihazlarda devre dışı bırak
+                if ('ontouchstart' in window) {
+                    follower.style.display = 'none';
+                    return;
+                }
+                
+                let mouseX = 0, mouseY = 0;
+                let followerX = 0, followerY = 0;
+                
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    follower.style.opacity = '1';
+                });
+                
+                function updateFollower() {
+                    const dx = mouseX - followerX;
+                    const dy = mouseY - followerY;
+                    
+                    followerX += dx * 0.2;
+                    followerY += dy * 0.2;
+                    
+                    follower.style.transform = `translate(${followerX}px, ${followerY}px)`;
+                    
+                    requestAnimationFrame(updateFollower);
+                }
+                
+                updateFollower();
+                
+                // Tıklama efekti
+                document.addEventListener('mousedown', () => {
+                    follower.style.transform = `translate(${followerX}px, ${followerY}px) scale(0.8)`;
+                    follower.style.border = '2px solid rgba(79, 70, 229, 0.5)';
+                    follower.style.backgroundColor = 'rgba(79, 70, 229, 0.1)';
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    follower.style.transform = `translate(${followerX}px, ${followerY}px) scale(1)`;
+                    follower.style.border = '2px solid rgba(79, 70, 229, 0.3)';
+                    follower.style.backgroundColor = 'transparent';
+                });
+                
+                // İnteraktif elementlerin üzerinde hover efekti
+                const interactiveElements = document.querySelectorAll('a, button, .countdown-value');
+                interactiveElements.forEach(element => {
+                    element.addEventListener('mouseenter', () => {
+                        follower.style.transform = `translate(${followerX}px, ${followerY}px) scale(1.5)`;
+                        follower.style.border = '2px solid rgba(79, 70, 229, 0.1)';
+                        follower.style.backgroundColor = 'rgba(79, 70, 229, 0.05)';
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        follower.style.transform = `translate(${followerX}px, ${followerY}px) scale(1)`;
+                        follower.style.border = '2px solid rgba(79, 70, 229, 0.3)';
+                        follower.style.backgroundColor = 'transparent';
+                    });
+                });
+            }
+            
+            // İnteraktif fare izleme efekti
+            function initInteractiveEffect() {
+                // Mobil cihazlarda devre dışı bırak
+                if ('ontouchstart' in window) {
+                    return;
+                }
+                
+                const container = document.querySelector('.container');
+                let effects = [];
+                
+                document.addEventListener('mousemove', (e) => {
+                    const x = e.clientX;
+                    const y = e.clientY;
+                    
+                    // Her fare hareketinde bir efekt oluşturmak yerine, aralıklı olarak
+                    if (Math.random() > 0.95) {
+                        createEffect(x, y);
+                    }
+                });
+                
+                function createEffect(x, y) {
+                    // Maksimum efekt sayısını sınırla
+                    if (effects.length > 5) {
+                        const oldEffect = effects.shift();
+                        if (oldEffect && oldEffect.parentNode) {
+                            oldEffect.parentNode.removeChild(oldEffect);
+                        }
+                    }
+                    
+                    const effect = document.createElement('div');
+                    effect.classList.add('interactive-element');
+                    effect.style.left = `${x}px`;
+                    effect.style.top = `${y}px`;
+                    effect.style.width = '300px';
+                    effect.style.height = '300px';
+                    
+                    container.appendChild(effect);
+                    effects.push(effect);
+                    
+                    // Görünür yap ve animasyonu başlat
+                    setTimeout(() => {
+                        effect.style.opacity = '0.6';
+                    }, 10);
+                    
+                    // Zaman aşımı sonrası kaldır
+                    setTimeout(() => {
+                        effect.style.opacity = '0';
+                        setTimeout(() => {
+                            if (effect.parentNode) {
+                                effect.parentNode.removeChild(effect);
+                                effects = effects.filter(e => e !== effect);
+                            }
+                        }, 500);
+                    }, 2000);
+                }
+            }
+            
+            // Geri sayım güncelleyici
+            function updateCountdown() {
+                const targetDate = new Date('2025-08-01T00:00:00');
+                const daysElement = document.getElementById('days');
+                const hoursElement = document.getElementById('hours');
+                const minutesElement = document.getElementById('minutes');
+                const secondsElement = document.getElementById('seconds');
+                
+                function update() {
+                    const currentDate = new Date();
+                    const difference = targetDate - currentDate;
+                    
+                    if (difference <= 0) {
+                        daysElement.textContent = '00';
+                        hoursElement.textContent = '00';
+                        minutesElement.textContent = '00';
+                        secondsElement.textContent = '00';
+                        
+                        document.querySelector('.subtitle').innerHTML = 'Web sitem <span class="highlight-text">şimdi</span> yayında!';
+                        document.querySelector('.message').innerHTML = 'Web sitem artık yayında! Portföyümü, projelerimi ve daha fazlasını keşfetmek için hemen inceleyin.';
+                        document.querySelector('.subscribe-form').style.display = 'none';
+                        document.getElementById('form-success').style.display = 'block';
+                        
+                        clearInterval(countdownInterval);
+                        return;
+                    }
+                    
+                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                    
+                    daysElement.textContent = String(days).padStart(2, '0');
+                    hoursElement.textContent = String(hours).padStart(2, '0');
+                    minutesElement.textContent = String(minutes).padStart(2, '0');
+                    secondsElement.textContent = String(seconds).padStart(2, '0');
+                }
+                
+                update(); // İlk güncellemeyi hemen yap
+                const countdownInterval = setInterval(update, 1000);
+            }
+            
+            // Sayfa yüklendiğinde yapılacaklar
+            function init() {
+                // Tarayıcı uyumluluk kontrolü
+                const isCompatible = checkCompatibility();
+                
+                if (isCompatible) {
+                    // Tarih ve yıl güncelleme
+                    document.getElementById('current-year').textContent = new Date().getFullYear();
+                    
+                    // Form işleme
+                    setupFormHandling();
+                    
+                    // Görsel efektler
+                    createStars();
+                    createShootingStars();
+                    createMeteors(); // Meteor efekti
+                    createParallaxElements();
+                    initMouseFollower();
+                    initInteractiveEffect();
+                    initTiltEffect(); // 3D tilt efekti
+                    
+                    // Geri sayım
+                    updateCountdown();
+                }
+            }
+            
+            // Form işleme
+            function setupFormHandling() {
+                const form = document.getElementById('notify-form');
+                const formSuccess = document.getElementById('form-success');
+                
+                // URL parametrelerini kontrol et (form gönderiminden geri yönlendirildiğinde)
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.has('success') || urlParams.has('submitted')) {
+                    form.style.display = 'none';
+                    formSuccess.style.display = 'block';
+                }
+                
+                // Form gönderimi
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        const button = form.querySelector('button[type="submit"]');
+                        if (button) {
+                            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gönderiliyor...';
+                            button.disabled = true;
+                        }
+                    });
+                }
+            }
+            
+            init();
+        });
+    </script>
+</body>
+</html>
 
